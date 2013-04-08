@@ -33,7 +33,7 @@
         <LAYERS NUMMER="3" LEVEL="3" NAME="Page Numbers" SICHTBAR="1" DRUCKEN="1" EDIT="1" FLOW="1" TRANS="1" BLEND="0" OUTL="0" LAYERC="#0000ff"/>
         <LAYERS NUMMER="4" LEVEL="4" NAME="Title" SICHTBAR="1" DRUCKEN="1" EDIT="1" FLOW="1" TRANS="1" BLEND="0" OUTL="0" LAYERC="#00ffff"/>
         <Printer firstUse="1" toFile="1" useAltPrintCommand="1" outputSeparations="1" useSpotColors="1" useColor="1" mirrorH="1" mirrorV="1" useICC="0" doGCR="0" doClip="0" setDevParam="0" useDocBleeds="0" cropMarks="0" bleedMarks="0" registrationMarks="0" colorMarks="0" includePDFMarks="0" PSLevel="0" PDLanguage="0" markOffset="0" BleedTop="0" BleedLeft="0" BleedRight="0" BleedBottom="0" printer="" filename="" separationName="" printerCommand=""/>
-        <PDF firstUse="0" Thumbnails="0" Articles="0" Bookmarks="0" Compress="1" CMethod="1" Quality="2" MirrorH="0" MirrorV="0" Clip="0" RotateDeg="0" PresentMode="0" RecalcPic="1" Grayscale="0" RGBMode="1" UseProfiles="0" UseProfiles2="0" Binding="0" PicRes="600" Resolution="600" Version="15" Intent="1" Intent2="0" SolidP="sRGB IEC61966-2.1" ImageP="sRGB IEC61966-2.1" PrintP="Fogra27L CMYK Coated Press" InfoString="" BTop="0" BLeft="0" BRight="0" BBottom="0" useDocBleeds="0" cropMarks="0" bleedMarks="0" registrationMarks="0" colorMarks="0" docInfoMarks="0" markOffset="0" ImagePr="0" PassOwner="" PassUser="" Permissions="-4" Encrypt="0" UseLayers="0" UseLpi="0" UseSpotColors="1" doMultiFile="0" displayBookmarks="0" displayFullscreen="0" displayLayers="0" displayThumbs="0" hideMenuBar="0" hideToolBar="0" fitWindow="0" PageLayout="0" openAction="">
+        <PDF firstUse="0" Thumbnails="0" Articles="0" Bookmarks="0" Compress="1" CMethod="0" Quality="0" MirrorH="0" MirrorV="0" Clip="0" RotateDeg="0" PresentMode="0" RecalcPic="1" Grayscale="0" RGBMode="0" UseProfiles="0" UseProfiles2="0" Binding="0" PicRes="600" Resolution="600" Version="15" Intent="1" Intent2="0" SolidP="sRGB IEC61966-2.1" ImageP="sRGB IEC61966-2.1" PrintP="Fogra27L CMYK Coated Press" InfoString="" BTop="8.50393700787402" BLeft="8.50393700787402" BRight="8.50393700787402" BBottom="8.50393700787402" useDocBleeds="0" cropMarks="1" bleedMarks="1" registrationMarks="1" colorMarks="1" docInfoMarks="1" markOffset="0" ImagePr="0" PassOwner="" PassUser="" Permissions="-4" Encrypt="0" UseLayers="0" UseLpi="0" UseSpotColors="0" doMultiFile="1" displayBookmarks="0" displayFullscreen="0" displayLayers="0" displayThumbs="0" hideMenuBar="0" hideToolBar="0" fitWindow="0" PageLayout="0" openAction="">
             <Fonts Name="Courier 10 Pitch Regular"/>
             <Subset Name="DejaVu Sans Book"/>
             <Subset Name="FreeSans Bold Oblique"/>
@@ -92,13 +92,13 @@
             <para PARENT="Text"/>
             <ITEXT CH="In general, the steps are always the same. You will need to find the correct configuration file, edit the file, and tell the operating system to reload the configuration file. "/>
             <para PARENT="Text"/>
-            <ITEXT CH="The first step is to find the correct configuration file. For most common tasks, you will find the configuration files in the /etc directory. It is very unlikely that you will pick a file at random and to start editing, it is much more likely that you will follow a guide or tutorial and this will tell you exactly which file you should be editing. So we need a simple example."/>
+            <ITEXT CH="The first step is to find the correct configuration file. For most common tasks, you will find the configuration files in the /etc directory. It is very unlikely that you will pick a file at random and start editing, it is much more likely that you will follow a guide or tutorial and this will tell you exactly which file you should be editing. So we need a simple example."/>
             <para PARENT="Text"/>
-            <ITEXT CH="As an example, let us configure Linux to automatically load the sound module. This is very useful because it means that programs can send sounds to the monitor. By default, te sound module is not loaded in most Raspberry Pi distributions, and a lot of users would prefer if it was loaded automatically."/>
+            <ITEXT CH="As an example, let us configure Linux to automatically load the sound module. This is very useful because it means that programs can send sounds to the monitor. By default, the sound module is not loaded in most Raspberry Pi distributions, and a lot of users would prefer if it was loaded automatically."/>
             <para PARENT="Text"/>
             <ITEXT CH="To load the sound module, we need to edit the file which configures which kernel modules should be automatically loaded. This file is called /etc/modules."/>
             <para PARENT="Text"/>
-            <ITEXT CH="Before you edit a file, it is a good idea to make a backup just in case you make a mistake. To make a copy of the file /etc/modules, you would use the command"/>
+            <ITEXT CH="Before you edit a file, it is a good idea to make a backup just in case you make a mistake. To make a copy of the file /etc/modules, you would use the command:"/>
             <para PARENT="Text"/>
             <para/>
             <ITEXT CH="sudo cp /etc/modules /etc/modules.old"/>
@@ -106,19 +106,19 @@
             <para/>
             <ITEXT CH="This copies the file /etc/modules to a file called /etc/modules.old. Note that the sudo command executes the cp command as a superuser, this is needed because an average user does not have the right to change anything in the /etc directory."/>
             <para PARENT="Text"/>
-            <ITEXT CH="If you make a real mess of the original file, you can copy the backup file to the original to undo any damage by using the command"/>
+            <ITEXT CH="If you make a real mess of the original file, you can copy the backup file to the original to undo any damage by using the command:"/>
             <para PARENT="Text"/>
             <para/>
             <ITEXT CH="sudo cp /etc/modules.old /etc/modules"/>
             <para PARENT="Command Line"/>
             <para/>
-            <ITEXT CH="Now it is time to actually edit the configuration file. There are lots of command-line editors available, we will use the nano editor which is suitable for beginners. To edit the file use the command"/>
+            <ITEXT CH="Now it is time to actually edit the configuration file. There are lots of command-line editors available, we will use the nano editor which is suitable for beginners. To edit the file use the command:"/>
             <para PARENT="Text"/>
             <para/>
             <ITEXT CH="sudo nano /etc/modules"/>
             <para PARENT="Command Line"/>
             <para/>
-            <ITEXT CH="You will find yourself in a simple text editor, you can move around with the arrow keys. As an example, we will add the sound module snd_bcm2835 to the file so that sound will be enabled automatically. In this file, the order of the entries is not important, so we can add the following text to the end of the file"/>
+            <ITEXT CH="You will find yourself in a simple text editor, you can move around with the arrow keys. As an example, we will add the sound module snd_bcm2835 to the file so that sound will be enabled automatically. In this file the order of the entries is not important, so we can add the following text to the end of the file:"/>
             <para PARENT="Text"/>
             <para/>
             <ITEXT CH="# Enable sound"/>
@@ -126,11 +126,11 @@
             <ITEXT CH="snd_bcm2835"/>
             <para PARENT="Command Line"/>
             <para/>
-            <ITEXT CH="Note that in some Linux distributions, you may find that snd_bcm2835 has already been enabled, in this case you will not be able to follow this example."/>
+            <ITEXT CH="Note that in some Linux distributions, you may find that snd_bcm2835 has already been enabled. In this case you will not be able to follow this example."/>
             <para PARENT="Text"/>
-            <ITEXT CH="In most configuration files, a line starting with # is a comment. It is a good idea to add a comment decribing any changes that you make. It can be very easy to forget the changes that you have made, so try to make the comment as meaningful as possible. If you are following an online guide, it is a good idea to put the web address of the guide into the comment so that you can find why you made the change."/>
+            <ITEXT CH="In most configuration files a line starting with # is a comment. It is a good idea to add a comment describing any changes that you make. It can be very easy to forget the changes that you have made, so try to make the comment as meaningful as possible. If you are following an online guide, it is a good idea to put the web address of the guide into the comment so that you can find why you made the change."/>
             <para PARENT="Text"/>
-            <ITEXT CH="To save the file, press the ctrl and o keys. To quit the editor, press the ctrl and x keys."/>
+            <ITEXT CH="To save the file press the CTRL and O keys. To quit the editor press the CTRL and X keys."/>
             <para PARENT="Text"/>
             <ITEXT CH="After saving the file, it is a good idea to look at the contents of the file to make sure that the editing was successful. Use the cat or the less command. If using the less command, use the q key to quit."/>
             <para PARENT="Text"/>
@@ -138,31 +138,26 @@
             <ITEXT CH="less /etc/modules"/>
             <para PARENT="Command Line"/>
             <para PARENT="Text"/>
-            <ITEXT CH="Just editing the configuration file is not enough, you must tell the operating system to read the new configuration file. If you are following a guide, the guide will tell you if you need to issue a command, usually to restart a program or to restart the complete system. In this example, we need to restart the complete system to re-read the /etc/modules file, so we need to use the command"/>
+            <ITEXT CH="Just editing the configuration file is not enough, you must tell the operating system to read the new configuration file. If you are following a guide, the guide will tell you if you need to issue a command; usually to restart a program or to restart the complete system. In this example, we need to restart the complete system to re-read the /etc/modules file, so we need to use the command:"/>
             <para PARENT="Text"/>
             <para/>
             <ITEXT CH="sudo reboot"/>
             <para PARENT="Command Line"/>
             <para/>
-            <ITEXT CH="That’s it, you have now successfully changed a Linux configuration file. The same general principles can be used to edit any configuration file."/>
-            <para PARENT="Text"/>
-            <para/>
-            <para/>
-            <para/>
-            <para/>
+            <ITEXT FONT="FreeSans Regular" CH="That’s it, you have now successfully changed a Linux configuration file. The same general principles can be used to edit any configuration file."/>
             <para/>
             <PageItemAttributes/>
         </PAGEOBJECT>
-        <PAGEOBJECT OwnPage="1" PTYPE="4" XPOS="749.140157480315" YPOS="62.5209448818898" WIDTH="513.076535433071" HEIGHT="542.72905511811" RADRECT="0" FRTYPE="0" CLIPEDIT="0" PWIDTH="1" PCOLOR="None" PCOLOR2="None" COLUMNS="2" COLGAP="34.0157480314961" NAMEDLST="" SHADE="100" SHADE2="100" GRTYP="0" ROT="0" PLINEART="1" PLINEEND="0" PLINEJOIN="0" LOCALSCX="1" LOCALSCY="1" LOCALX="0" LOCALY="0" PICART="1" PLTSHOW="0" BASEOF="0" textPathType="0" textPathFlipped="0" FLIPPEDH="0" FLIPPEDV="0" SCALETYPE="1" RATIO="1" PRINTABLE="1" ANNOTATION="0" ANNAME="" TEXTFLOWMODE="0" TEXTFLOW="0" TEXTFLOW2="0" TEXTFLOW3="0" AUTOTEXT="1" EXTRA="0" TEXTRA="0" BEXTRA="0" REXTRA="0" FLOP="0" PFILE="" PFILE2="" PFILE3="" PRFILE="" EPROF="" IRENDER="1" EMBEDDED="1" LOCK="0" LOCKR="0" REVERS="0" TransValue="0" TransValueS="0" TransBlend="0" TransBlendS="0" isTableItem="0" TopLine="0" LeftLine="0" RightLine="0" BottomLine="0" isGroupControl="0" NUMDASH="0" DASHS="" DASHOFF="0" NUMPO="16" POCOOR="0 0 0 0 513.077 0 513.077 0 513.077 0 513.077 0 513.077 542.729 513.077 542.729 513.077 542.729 513.077 542.729 0 542.729 0 542.729 0 542.729 0 542.729 0 0 0 0 " NUMCO="16" COCOOR="0 0 0 0 513.077 0 513.077 0 513.077 0 513.077 0 513.077 542.729 513.077 542.729 513.077 542.729 513.077 542.729 0 542.729 0 542.729 0 542.729 0 542.729 0 0 0 0 " NUMGROUP="0" GROUPS="" startArrowIndex="0" endArrowIndex="0" OnMasterPage="" ImageClip="" ImageRes="1" Pagenumber="0" isInline="0" fillRule="1" doOverprint="0" gXpos="0" gYpos="0" gWidth="0" gHeight="0" LAYER="1" BOOKMARK="0" NEXTITEM="-1" BACKITEM="2">
+        <PAGEOBJECT OwnPage="1" PTYPE="4" XPOS="749.14013671875" YPOS="62.5209465026855" WIDTH="513.076538085938" HEIGHT="538.979064941406" RADRECT="0" FRTYPE="0" CLIPEDIT="0" PWIDTH="1" PCOLOR="None" PCOLOR2="None" COLUMNS="2" COLGAP="34.0157480314961" NAMEDLST="" SHADE="100" SHADE2="100" GRTYP="0" ROT="0" PLINEART="1" PLINEEND="0" PLINEJOIN="0" LOCALSCX="1" LOCALSCY="1" LOCALX="0" LOCALY="0" PICART="1" PLTSHOW="0" BASEOF="0" textPathType="0" textPathFlipped="0" FLIPPEDH="0" FLIPPEDV="0" SCALETYPE="1" RATIO="1" PRINTABLE="1" ANNOTATION="0" ANNAME="" TEXTFLOWMODE="0" TEXTFLOW="0" TEXTFLOW2="0" TEXTFLOW3="0" AUTOTEXT="1" EXTRA="0" TEXTRA="0" BEXTRA="0" REXTRA="0" FLOP="0" PFILE="" PFILE2="" PFILE3="" PRFILE="" EPROF="" IRENDER="1" EMBEDDED="1" LOCK="0" LOCKR="0" REVERS="0" TransValue="0" TransValueS="0" TransBlend="0" TransBlendS="0" isTableItem="0" TopLine="0" LeftLine="0" RightLine="0" BottomLine="0" isGroupControl="0" NUMDASH="0" DASHS="" DASHOFF="0" NUMPO="16" POCOOR="0 0 0 0 513.077 0 513.077 0 513.077 0 513.077 0 513.077 538.979 513.077 538.979 513.077 538.979 513.077 538.979 0 538.979 0 538.979 0 538.979 0 538.979 0 0 0 0 " NUMCO="16" COCOOR="0 0 0 0 513.077 0 513.077 0 513.077 0 513.077 0 513.077 538.979 513.077 538.979 513.077 538.979 513.077 538.979 0 538.979 0 538.979 0 538.979 0 538.979 0 0 0 0 " NUMGROUP="0" GROUPS="" startArrowIndex="0" endArrowIndex="0" OnMasterPage="" ImageClip="" ImageRes="1" Pagenumber="0" isInline="0" fillRule="1" doOverprint="0" gXpos="0" gYpos="0" gWidth="0" gHeight="0" LAYER="1" BOOKMARK="0" NEXTITEM="-1" BACKITEM="2">
             <PageItemAttributes/>
         </PAGEOBJECT>
         <PAGEOBJECT OwnPage="0" PTYPE="4" XPOS="100.00062992126" YPOS="833.544566929134" WIDTH="28.3464566929134" HEIGHT="28.1095684092118" RADRECT="0" FRTYPE="0" CLIPEDIT="0" PWIDTH="1" PCOLOR="None" PCOLOR2="None" COLUMNS="1" COLGAP="0" NAMEDLST="" SHADE="100" SHADE2="100" GRTYP="0" ROT="0" PLINEART="1" PLINEEND="0" PLINEJOIN="0" LOCALSCX="1" LOCALSCY="1" LOCALX="0" LOCALY="0" PICART="1" PLTSHOW="0" BASEOF="0" textPathType="0" textPathFlipped="0" FLIPPEDH="0" FLIPPEDV="0" SCALETYPE="1" RATIO="1" PRINTABLE="1" ANNOTATION="0" ANNAME="" TEXTFLOWMODE="0" TEXTFLOW="0" TEXTFLOW2="0" TEXTFLOW3="0" AUTOTEXT="0" EXTRA="0" TEXTRA="0" BEXTRA="0" REXTRA="0" FLOP="0" PFILE="" PFILE2="" PFILE3="" PRFILE="" EPROF="" IRENDER="1" EMBEDDED="1" LOCK="1" LOCKR="1" REVERS="0" TransValue="0" TransValueS="0" TransBlend="0" TransBlendS="0" isTableItem="0" TopLine="0" LeftLine="0" RightLine="0" BottomLine="0" isGroupControl="0" NUMDASH="0" DASHS="" DASHOFF="0" NUMPO="16" POCOOR="0 0 0 0 28.3465 0 28.3465 0 28.3465 0 28.3465 0 28.3465 28.1096 28.3465 28.1096 28.3465 28.1096 28.3465 28.1096 0 28.1096 0 28.1096 0 28.1096 0 28.1096 0 0 0 0 " NUMCO="16" COCOOR="0 0 0 0 28.3465 0 28.3465 0 28.3465 0 28.3465 0 28.3465 28.1096 28.3465 28.1096 28.3465 28.1096 28.3465 28.1096 0 28.1096 0 28.1096 0 28.1096 0 28.1096 0 0 0 0 " NUMGROUP="0" GROUPS="" startArrowIndex="0" endArrowIndex="0" OnMasterPage="" ImageClip="" ImageRes="1" Pagenumber="0" isInline="0" fillRule="1" doOverprint="0" gXpos="0" gYpos="0" gWidth="0" gHeight="0" LAYER="3" BOOKMARK="0" NEXTITEM="-1" BACKITEM="-1">
-            <ITEXT FONT="FreeSans BoldOblique" FONTSIZE="16" CH="22"/>
+            <ITEXT FONT="FreeSans Bold Oblique" FONTSIZE="16" CH="22"/>
             <trail ALIGN="2"/>
             <PageItemAttributes/>
         </PAGEOBJECT>
         <PAGEOBJECT OwnPage="1" PTYPE="4" XPOS="1262.21669291339" YPOS="833.544566929134" WIDTH="28.34645669" HEIGHT="28.10956841" RADRECT="0" FRTYPE="0" CLIPEDIT="0" PWIDTH="1" PCOLOR="None" PCOLOR2="None" COLUMNS="1" COLGAP="0" NAMEDLST="" SHADE="100" SHADE2="100" GRTYP="0" ROT="0" PLINEART="1" PLINEEND="0" PLINEJOIN="0" LOCALSCX="1" LOCALSCY="1" LOCALX="0" LOCALY="0" PICART="1" PLTSHOW="0" BASEOF="0" textPathType="0" textPathFlipped="0" FLIPPEDH="0" FLIPPEDV="0" SCALETYPE="1" RATIO="1" PRINTABLE="1" ANNOTATION="0" ANNAME="" TEXTFLOWMODE="0" TEXTFLOW="0" TEXTFLOW2="0" TEXTFLOW3="0" AUTOTEXT="0" EXTRA="0" TEXTRA="0" BEXTRA="0" REXTRA="0" FLOP="0" PFILE="" PFILE2="" PFILE3="" PRFILE="" EPROF="" IRENDER="1" EMBEDDED="1" LOCK="1" LOCKR="1" REVERS="0" TransValue="0" TransValueS="0" TransBlend="0" TransBlendS="0" isTableItem="0" TopLine="0" LeftLine="0" RightLine="0" BottomLine="0" isGroupControl="0" NUMDASH="0" DASHS="" DASHOFF="0" NUMPO="16" POCOOR="0 0 0 0 28.3465 0 28.3465 0 28.3465 0 28.3465 0 28.3465 28.1096 28.3465 28.1096 28.3465 28.1096 28.3465 28.1096 0 28.1096 0 28.1096 0 28.1096 0 28.1096 0 0 0 0 " NUMCO="16" COCOOR="0 0 0 0 28.3465 0 28.3465 0 28.3465 0 28.3465 0 28.3465 28.1096 28.3465 28.1096 28.3465 28.1096 28.3465 28.1096 0 28.1096 0 28.1096 0 28.1096 0 28.1096 0 0 0 0 " NUMGROUP="0" GROUPS="" startArrowIndex="0" endArrowIndex="0" OnMasterPage="" ImageClip="" ImageRes="1" Pagenumber="0" isInline="0" fillRule="1" doOverprint="0" gXpos="0" gYpos="0" gWidth="0" gHeight="0" LAYER="3" BOOKMARK="0" NEXTITEM="-1" BACKITEM="-1">
-            <ITEXT FONT="FreeSans BoldOblique" FONTSIZE="16" CH="23"/>
+            <ITEXT FONT="FreeSans Bold Oblique" FONTSIZE="16" CH="23"/>
             <trail ALIGN="0"/>
             <PageItemAttributes/>
         </PAGEOBJECT>
@@ -207,7 +202,7 @@
             <para PARENT="Text"/>
             <ITEXT FCOLOR="White" FSHADE="100" CH="Each configuration file is different and there are special rules on what is expected in each file. Usually you will be following a guide which will tell you exactly what you should type. But if you want to learn more about each configuration file, you can read the relevant manual page."/>
             <para PARENT="Text"/>
-            <ITEXT FCOLOR="White" FSHADE="100" CH="To do this, enter the man command followed by the name of the file. For example, to see the manual for the /etc/modules file, enter the command"/>
+            <ITEXT FCOLOR="White" FSHADE="100" CH="To do this, enter the man command followed by the name of the file. For example, to see the manual for the /etc/modules file, enter the command:"/>
             <para PARENT="Text"/>
             <para PARENT="Command Line"/>
             <ITEXT FCOLOR="White" FSHADE="100" CH="man modules"/>
@@ -231,7 +226,7 @@
             <para PARENT="Text"/>
             <ITEXT FCOLOR="White" FSHADE="100" CH="When you are halfway through typing a filename, you can press the tab key to automatically complete the end of the filename. If the filename is not completed automatically, press the tab key again to see the choices available, and keep typing."/>
             <para PARENT="Text"/>
-            <ITEXT FCOLOR="White" FSHADE="100" CH="To see how this works, try typing"/>
+            <ITEXT FCOLOR="White" FSHADE="100" CH="To see how this works, try typing:"/>
             <para PARENT="Text"/>
             <para PARENT="Command Line"/>
             <ITEXT FCOLOR="White" FSHADE="100" CH="sudo nano /etc/mod"/>
