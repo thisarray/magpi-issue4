@@ -1,0 +1,31 @@
+Hi
+First, congratulations on producing an excellent resource for the RPi community, you should be
+justly proud of yourselves for coming up with such a professional and useful publication.
+Now, my comment is with regard to the article on the GPIO by Mike G8NXD in issue 3 - he
+warns about the lack of protection offered by the GPIO connectors, rightly so. I feel that it is
+important to point out that the GPIO pins only offer 3.3 volt CONTROL signals, and aren't
+intended to drive ANY sort of load.
+I f you want to connect something external to a GPIO pin, even something like a LED, it ideally
+needs to be connected via some sort of buffer, so that the GPIO signal is used just to switch the
+buffer, not to take any of the load. This becomes more important as you add extra LEDs,
+especially if they are the high-brightness type.
+A simple buffer can be made from a cheap NPN transistor and a
+couple of resistors, and should only cost a few pence - for
+example, plastic-packaged versions of the 2N2222A NPN
+transistor may be bought from Ebay for 5p each - a small price to
+pay to protect your RPi!
+A good article on transistors as switches may be found here
+http: //www. rason.org/Projects/transwit/transwit.htm - I 've copied
+the following diagram from there, which gives the general idea :
+This example shows a 1 2v supply and a 2N3904 transistor, but a
+2N2222 can be substituted. For operation from 5v, I 'd use lower
+resistor values, 3K3 for R1 , 33K for R2. This will happily switch a
+30mA LED, in fact the 2N2222 will handle loads up to 600mA
+although you'd need to calculate different values for R1 and R2
+to match the load - full details in the quoted article.
+Finally, don't take the power from the GPIO pins, use a separate source - however, you will need
+to connect the GPIO ground to the buffer ground and, of course, the required GPIO control
+signal pin to the buffer input.
+Hope this is useful, and saves someone from the expense - and grief - of 'Magic Smoke'!
+Best Regards
+J Ellerington
