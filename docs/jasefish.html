@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fish Game</title>
+  <script src="../jsgame0.js"></script>
+  <style type="text/css" media="screen">
+body {
+  background-color: white;
+  color: black;
+}
+.hidden {
+  display: none;
+}
+#original {
+  margin-left: 1em;
+}
+  </style>
+</head>
+
+<body>
+<section id="imageLoader" class="hidden">
+  <img class="hidden" src="images/arm_linux.png" alt="arm_linux" data-name="arm_linux">
+  <img class="hidden" src="images/fish.png" alt="fish" data-name="fish">
+</section>
+<section id="soundLoader" class="hidden">
+  <audio class="hidden" controls preload="auto" src="sounds/burp.wav" data-name="burp">Your browser does not support the audio element.</audio>
+  <audio class="hidden" controls preload="auto" src="sounds/toy.wav" data-name="toy">Your browser does not support the audio element.</audio>
+</section>
+<section id="musicLoader" class="hidden">
+  <audio class="hidden" controls preload="auto" src="sounds/tune.wav" data-name="tune">Your browser does not support the audio element.</audio>
+</section>
+
+<main>
+<h1>Fish Game</h1>
+
+<canvas id="screen">
+The game screen appears here if your browser supports the Canvas API.
+</canvas>
+<section id="controls">
+  <button type="button" id="reset">Reset</button>
+  <button type="button" id="pause">Pause</button>
+</section>
+
+<h2>Attribution</h2>
+
+<p><a href="https://magpi.raspberrypi.com/issues/4">The Python Pit, pages 30 - 31</a>.</p>
+
+<p>Licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/legalcode">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported</a>.</p>
+
+<h2>Original Python code</h2>
+
+<pre id="original"><code>
+# Fish Game
+
+# By antiloquax - 18th July 2012
+
+import pygame, random
+from pygame.locals import *
+pygame.init()
+clock = pygame.time.Clock()
+
+screen = pygame.display.set_mode([600,400])
+pygame.display.set_caption(&quot;Fish Game&quot;)
+
+music = pygame.mixer.Sound(&quot;tune.wav&quot;)
+music.play(-1)
+toy = pygame.mixer.Sound(&quot;toy.wav&quot;)
+burp  = pygame.mixer.Sound(&quot;burp.wav&quot;)
+
+tux = pygame.image.load(&quot;arm_linux.png&quot;).convert_alpha()
+fish = pygame.image.load(&quot;fish.png&quot;).convert_alpha()
+
+tx=280; ty=180; txd=0; tyd=0
+bx=600; by=-15
+fx=600; fy=random.randint(0,370)
+bkcol=[127,212,255]
+lives=3; score=0; run = True;
+
+# Draw the surfaces for Tux, Fish and Ball
+tuxsurf = pygame.Surface((60,70))
+tuxsurf.fill(bkcol)
+tuxsurf.set_colorkey(bkcol)
+tuxsurf.blit(tux,[0,0])
+fishsurf = pygame.Surface((35,30))
+fishsurf.fill(bkcol)
+fishsurf.set_colorkey(bkcol)
+fishsurf.blit(fish,[0,0])
+ballsurf = pygame.Surface((60,60))
+ballsurf.fill(bkcol)
+ballsurf.set_colorkey(bkcol)
+ballsurf.set_alpha(128)
+pygame.draw.circle(ballsurf,[255,255,255],[30,30],30)
+
+while run:
+	for event in pygame.event.get():
+		if event.type == pygame.QUIT: run = False
+		if event.type == pygame.KEYDOWN:
+			if event.key == pygame.K_LEFT: txd=-4
+			if event.key == pygame.K_RIGHT: txd=4
+			if event.key == pygame.K_UP: tyd=-4
+			if event.key == pygame.K_DOWN: tyd=4
+		if event.type == pygame.KEYUP:
+			txd=0; tyd=0
+	tx+=txd; ty+=tyd
+
+	# This part stops Tux from leaving the edges of the screen
+	if tx&lt;= 0: tx=0
+	if tx&gt;=540: tx=540
+	if ty&lt;=0: ty=0
+	if ty&gt;=330: ty=330
+
+	# Make the ball chase Tux
+	if bx&gt;=tx: bx=bx-1
+	else: bx=bx+1
+	if by&gt;=ty: by=by-1
+	else: by=by+1
+	fx=fx-4
+	if fx&lt;=-10: fx=600; fy=random.randint(0,370)
+
+	# Collision Detection (Tux &amp; Fish, Tux &amp; Ball)
+	if fx&lt;=tx+50 and fx&gt;=tx and fy&gt;=ty-30 and fy&lt;=ty+70:
+		toy.play(); fx=600;fy=random.randint(0,370); score +=1
+	if bx&lt;=tx+40 and bx&gt;=tx-40 and by&gt;=ty-50 and by&lt;=ty+60:
+		burp.play(); bx=600; by=-15; lives -=1; tx=280; ty=180
+
+	screen.fill(bkcol)
+	screen.blit(tuxsurf,[tx,ty])
+	screen.blit(fishsurf,[fx,fy])
+	screen.blit(ballsurf,[bx,by])
+	font = pygame.font.Font(None, 20)
+	text = font.render(&quot;Score: &quot;+str(score), 1, (0,0,0))
+	screen.blit(text, [5,5])
+	text = font.render(&quot;Lives: &quot;+str(lives), 1, (0,0,0))
+	screen.blit(text, [80,5])
+
+	if lives &lt;= 0:
+		font = pygame.font.Font(None, 120)
+		text = font.render(&quot;GAME OVER!&quot;, 1, (255,0,0))
+		screen.blit(text, [36,150])
+		pygame.display.update();pygame.time.wait(4000)
+		lives=3; score=0; tx=280; ty=180
+
+	pygame.display.update(); clock.tick(100)
+pygame.quit()
+</code></pre>
+</main>
+
+<script>
+// Fish Game
+
+// By antiloquax - 18th July 2012
+
+WIDTH = 600;
+HEIGHT = 400;
+TITLE = "Fish Game";
+
+/*
+ * Return a random integer N such that min <= N < max.
+ */
+function getRandomInteger(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor((Math.random() * (max - min)) + min);
+}
+
+const BACKGROUND_COLOR = [127, 212, 255];
+
+var tx, ty, txd, tyd, bx, by, fx, fy, lives, score;
+
+function reset() {
+  music.play("tune");
+
+  tx = 280;
+  ty = 180;
+  txd = 0;
+  tyd = 0;
+  bx = 600;
+  by = -15;
+  fx = 600;
+  fy = getRandomInteger(0, 371);
+  lives = 3;
+  score = 0;
+}
+
+function on_key_down(key) {
+  if (key === keys.LEFT) {
+    txd = -4;
+  }
+  if (key === keys.RIGHT) {
+    txd = 4;
+  }
+  if (key === keys.UP) {
+    tyd = -4;
+  }
+  if (key === keys.DOWN) {
+    tyd = 4;
+  }
+}
+
+function on_key_up(key) {
+  txd = 0;
+  tyd = 0;
+}
+
+function update() {
+  if (lives <= 0) {
+    return;
+  }
+
+  tx += txd;
+  ty += tyd;
+
+  // This part stops Tux from leaving the edges of the screen
+  if (tx <= 0) {
+    tx = 0;
+  }
+  if (tx >= 540) {
+    tx = 540;
+  }
+  if (ty <= 0) {
+    ty = 0;
+  }
+  if (ty >= 330) {
+    ty = 330;
+  }
+
+  // Make the ball chase Tux
+  if (bx >= tx) {
+    bx = bx - 1;
+  }
+  else {
+    bx = bx + 1;
+  }
+  if (by >= ty) {
+    by = by - 1;
+  }
+  else {
+    by = by + 1;
+  }
+  fx = fx - 4;
+  if (fx <= -10) {
+    fx = 600;
+    fy = getRandomInteger(0, 371);
+  }
+
+  // Collision Detection (Tux & Fish, Tux & Ball)
+  if ((fx <= (tx + 50)) && (fx >= tx) && (fy >= (ty - 30)) && (fy <= (ty + 70))) {
+    sounds["toy"].play();
+    fx = 600;
+    fy = getRandomInteger(0, 371);
+    score += 1;
+  }
+  if ((bx <= (tx + 40)) && (bx >= (tx - 40)) && (by >= (ty - 50)) && (by <= (ty + 60))) {
+    sounds["burp"].play();
+    bx = 600;
+    by = -15;
+    lives -= 1;
+    tx = 280;
+    ty = 180;
+  }
+}
+
+function draw() {
+  screen.fill(BACKGROUND_COLOR);
+  screen.blit("arm_linux", [tx, ty]);
+  screen.blit("fish", [fx, fy]);
+  screen.draw.filled_circle([bx + 30, by + 30], 30, [255, 255, 255]);
+  screen.draw.text("Score: " + score, {
+    fontsize: 20,
+    topleft: [5, 5],
+    color: [0, 0, 0]
+  });
+  screen.draw.text("Lives: " + lives, {
+    fontsize: 20,
+    topleft: [80, 5],
+    color: [0, 0, 0]
+  });
+
+  if (lives <= 0) {
+    screen.draw.text("GAME OVER!", {
+      fontsize: 120,
+      topleft: [36, 150],
+      color: [255, 0, 0]
+    });
+  }
+}
+
+window.addEventListener('load', (event) => {
+  screen.init();
+});
+</script>
+</body>
+
+</html>
