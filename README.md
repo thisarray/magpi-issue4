@@ -1,4 +1,6 @@
 magpi-issue4
 ============
 
-A respository for documents and code
+A repository for documents and code
+
+[Run the JavaScript port of Fish Game in your browser.](https://thisarray.github.io/magpi-issue4/jasefish.html)
